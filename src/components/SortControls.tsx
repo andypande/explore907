@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpDown, Grid, List, SortAsc, SortDesc } from 'lucide-react';
+import { Grid, List, SortAsc, SortDesc } from 'lucide-react';
 import type { SortOption, SortDirection } from '../types/activity';
 import clsx from 'clsx';
 

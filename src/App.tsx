@@ -1,10 +1,10 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import Header from './components/Header';
 import FilterPanel from './components/FilterPanel';
 import SortControls from './components/SortControls';
 import ActivityCard from './components/ActivityCard';
 import { activities } from './data/activities';
-import type { Activity, Filters, SortOption, SortDirection } from './types/activity';
+import type { Filters, SortOption, SortDirection } from './types/activity';
 import clsx from 'clsx';
 
 function App() {

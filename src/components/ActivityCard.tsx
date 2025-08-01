@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Clock, Mountain, Star, Snowflake, Sun } from 'lucide-react';
+import { MapPin, Clock, Mountain, Snowflake, Sun } from 'lucide-react';
 import type { Activity } from '../types/activity';
 import clsx from 'clsx';
 
