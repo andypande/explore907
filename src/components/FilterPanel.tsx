@@ -70,29 +70,32 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
     <div className="border-b border-gray-200 last:border-b-0">
       <button
         onClick={() => toggleSection(sectionKey)}
-        className="w-full flex items-center justify-between py-3 px-4 text-left hover:bg-gray-50"
+        className="w-full flex items-center justify-between py-4 sm:py-3 px-4 text-left hover:bg-gray-50 active:bg-gray-100 transition-colors min-h-[60px] sm:min-h-0"
       >
-        <span className="font-medium text-gray-900">{title}</span>
+        <span className="font-medium text-gray-900 text-base sm:text-sm">{title}</span>
         {expandedSections.has(sectionKey) ? (
-          <ChevronUp className="w-4 h-4 text-gray-500" />
+          <ChevronUp className="w-6 h-6 sm:w-4 sm:h-4 text-gray-500" />
         ) : (
-          <ChevronDown className="w-4 h-4 text-gray-500" />
+          <ChevronDown className="w-6 h-6 sm:w-4 sm:h-4 text-gray-500" />
         )}
       </button>
       
       {expandedSections.has(sectionKey) && (
-        <div className="px-4 pb-3 space-y-2">
+        <div className="px-4 pb-4 sm:pb-3 space-y-3 sm:space-y-2">
           {items.map(item => {
             const isChecked = (filters[filterKey] as string[]).includes(item);
             return (
-              <label key={item} className="flex items-center space-x-2 cursor-pointer">
+              <label 
+                key={item} 
+                className="flex items-center space-x-4 sm:space-x-2 cursor-pointer py-3 sm:py-1 px-3 sm:px-2 -mx-3 sm:-mx-2 rounded-lg hover:bg-gray-50 active:bg-gray-100 transition-colors min-h-[48px] sm:min-h-0"
+              >
                 <input
                   type="checkbox"
                   checked={isChecked}
                   onChange={(e) => updateFilter(filterKey, item, e.target.checked)}
-                  className="rounded border-gray-300 text-alaska-blue focus:ring-alaska-blue"
+                  className="w-6 h-6 sm:w-4 sm:h-4 rounded border-2 border-gray-300 text-alaska-blue focus:ring-2 focus:ring-alaska-blue focus:ring-offset-2 flex-shrink-0"
                 />
-                <span className="text-sm text-gray-700">{item}</span>
+                <span className="text-base sm:text-sm text-gray-700 font-medium leading-none select-none">{item}</span>
               </label>
             );
           })}
@@ -106,24 +109,24 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
       {!isMobile && (
         <>
           {/* Mobile Filter Toggle - Only show when not in mobile overlay */}
-          <div className="lg:hidden bg-white border-b border-gray-200 px-4 py-3">
+          <div className="lg:hidden bg-white border-b border-gray-200 px-4 py-4">
             <button
               onClick={() => setIsExpanded(!isExpanded)}
-              className="flex items-center justify-between w-full"
+              className="flex items-center justify-between w-full min-h-[56px] py-3 px-2 rounded-lg hover:bg-gray-50 active:bg-gray-100 transition-colors"
             >
-              <div className="flex items-center space-x-2">
-                <Filter className="w-5 h-5 text-gray-600" />
-                <span className="font-medium text-gray-900">Filters</span>
+              <div className="flex items-center space-x-3">
+                <Filter className="w-6 h-6 text-gray-600" />
+                <span className="font-medium text-gray-900 text-base">Filters</span>
                 {activeFilterCount > 0 && (
-                  <span className="bg-alaska-blue text-white text-xs px-2 py-1 rounded-full">
+                  <span className="bg-alaska-blue text-white text-sm px-3 py-1 rounded-full font-medium">
                     {activeFilterCount}
                   </span>
                 )}
               </div>
               {isExpanded ? (
-                <ChevronUp className="w-5 h-5 text-gray-500" />
+                <ChevronUp className="w-6 h-6 text-gray-500" />
               ) : (
-                <ChevronDown className="w-5 h-5 text-gray-500" />
+                <ChevronDown className="w-6 h-6 text-gray-500" />
               )}
             </button>
           </div>
@@ -139,25 +142,25 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
       )}>
         <div className="h-full overflow-y-auto">
           {/* Header */}
-          <div className="px-4 py-4 border-b border-gray-200">
-            <div className="flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-gray-900">Filters</h2>
-              <div className="flex items-center space-x-2">
+          <div className="px-4 py-5 sm:py-4 border-b border-gray-200">
+            <div className="flex items-center justify-between min-h-[48px] sm:min-h-0">
+              <h2 className="text-xl sm:text-lg font-semibold text-gray-900">Filters</h2>
+              <div className="flex items-center space-x-3 sm:space-x-2">
                 {activeFilterCount > 0 && (
                   <button
                     onClick={onClearFilters}
-                    className="flex items-center space-x-1 text-sm text-alaska-blue hover:text-blue-700"
+                    className="flex items-center space-x-2 sm:space-x-1 text-base sm:text-sm text-alaska-blue hover:text-blue-700 active:text-blue-800 py-2 px-3 sm:py-1 sm:px-2 rounded-lg hover:bg-blue-50 active:bg-blue-100 transition-colors min-h-[44px] sm:min-h-0"
                   >
-                    <X className="w-4 h-4" />
-                    <span>Clear all</span>
+                    <X className="w-5 h-5 sm:w-4 sm:h-4" />
+                    <span className="font-medium">Clear all</span>
                   </button>
                 )}
                 {isMobile && onClose && (
                   <button
                     onClick={onClose}
-                    className="p-1 text-gray-500 hover:text-gray-700"
+                    className="p-3 sm:p-1 text-gray-500 hover:text-gray-700 active:text-gray-800 rounded-lg hover:bg-gray-100 active:bg-gray-200 transition-colors min-h-[44px] min-w-[44px] sm:min-h-0 sm:min-w-0 flex items-center justify-center"
                   >
-                    <X className="w-5 h-5" />
+                    <X className="w-6 h-6 sm:w-5 sm:h-5" />
                   </button>
                 )}
               </div>

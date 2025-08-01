@@ -47,11 +47,11 @@ const Header: React.FC<HeaderProps> = ({
           <div className="lg:hidden">
             <button 
               onClick={onMobileFilterToggle}
-              className="text-white relative p-2 rounded-lg hover:bg-white hover:bg-opacity-20 transition-colors"
+              className="text-white relative p-3 sm:p-2 rounded-xl hover:bg-white hover:bg-opacity-20 active:bg-white active:bg-opacity-30 transition-colors min-h-[48px] min-w-[48px] flex items-center justify-center"
             >
-              <Filter className="w-6 h-6" />
+              <Filter className="w-7 h-7 sm:w-6 sm:h-6" />
               {activeFilterCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-alaska-green text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium">
+                <span className="absolute -top-1 -right-1 bg-alaska-green text-white text-xs rounded-full w-6 h-6 sm:w-5 sm:h-5 flex items-center justify-center font-bold">
                   {activeFilterCount}
                 </span>
               )}
